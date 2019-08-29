@@ -19,6 +19,9 @@ uint8_t spi_transfer(uint8_t data, uint8_t lastTransfer){
     digitalWrite(SS, LOW); // set SS low to enable data transfer to chip
     received_data = SPI.transfer(data); // send data byte
     // Assuming SPI.transfer send a byte and waits until it's done
+
+    // last transfer is a boolean that tells the readwriteByte when the last byte is being transferred,
+    // which means that if the boolean is set, you can disable the transfer (with SS)
     if (lastTransfer) // if last byte in transfer packet
         digitalWrite(SS,HIGH); // set SS high to disable data transfer
 

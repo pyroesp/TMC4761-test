@@ -1,33 +1,30 @@
 #include "tmc/ic/TMC4671/TMC4671.h"
 
 /**
-the TMC4671_MOTORS define is in the TMC4671_Constants.h
-This define tells the programmer how many motor you can drive from the chip
-For example, a TMC2041 has a TMC2041_MOTORS set to 2, because it can drive 2 motors
+The TMC4671_eval code uses DEFAULT_MOTOR and TMC4671_MOTOR defines, why I don't know...
+They ignore TMC4671_MOTOR and only use DEFAULT_MOTOR
+
+Also, the TMC4671_MOTORS define can be found in the TMC4671_Constants.h
+This define tells the programmer how many motors you can drive from the chip
+For example: a TMC2041 has a TMC2041_MOTORS define set to 2, because it can drive 2 motors
 
 The TMC4671 only has 1 motor, so the motor variable can be ignored in the library
-unless the circuit uses more than ont TMC4671. In that case use the motor variable to select
+unless the circuit uses more than one TMC4671. In that case use the motor variable to select
 the appropriate SS signal in the readwriteByte function as follows:
 
     if (motor == 0)
         digitalWrite(SS0, LOW);
     else if (motor == 1)
         digitalWrite(SS1, LOW);
+
+If you use a multiple different Trinamic chips where some chips can drive more than one motor, then you're SOL
 **/
 
 
+// define SS pin for the trinamic chip
 #define SS IO_pin
-
+// setup the spi settings
 SPISettings settingsA(something, something, something);
-
-setup(){
-    // Do SPI setup here
-    SPI.begin();
-
-    // Do motor setup here
-    tmc4671_setMotorType(0, motorType);
-    tmc4671_setPolePairs(0, polePairs);
-}
 
 // Make your own spi transfer function
 uint8_t tmc4671_readwriteByte(uint8_t motor, uint8_t data, uint8_t lastTransfer){
@@ -52,6 +49,17 @@ uint8_t tmc4671_readwriteByte(uint8_t motor, uint8_t data, uint8_t lastTransfer)
     return received_data;
 }
 
+// arduino setup
+setup(){
+    // Do SPI setup here
+    SPI.begin();
+
+    // Do motor setup here
+    tmc4671_setMotorType(0, motorType);
+    tmc4671_setPolePairs(0, polePairs);
+}
+
+// arduino loop
 loop()
 {
     // do loop stuff here

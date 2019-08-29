@@ -21,7 +21,7 @@ the appropriate SS signal in the readwriteByte function as follows:
     else if (motor == 1)
         digitalWrite(SS1, LOW);
 
-If you use a multiple different Trinamic chips where some chips can drive more than one motor, then you're SOL
+If you use multiple different Trinamic chips where some chips can drive more than one motor, then you're SOL
 **/
 
 

@@ -1,3 +1,7 @@
+
+/** Proof of Concept **/
+/**    Not Tested    **/
+
 #include "tmc/ic/TMC4671/TMC4671.h"
 
 /**

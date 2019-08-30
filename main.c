@@ -52,6 +52,8 @@ uint8_t tmc4671_readwriteByte(uint8_t motor, uint8_t data, uint8_t lastTransfer)
     // which means that if the boolean is set, you can disable the transfer with SS
     if (lastTransfer) // if last byte in transfer packet
         digitalWrite(SS,HIGH); // set SS high to disable data transfer
+    
+    SPI.endTransaction();
 
     return received_data;
 }

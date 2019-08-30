@@ -6,7 +6,7 @@
 
 #include "tmc/ic/TMC4671/TMC4671.h"
 
-#define TMC4671_ID 0x34363731
+#define TMC4671_ID 0x34363731 // "4671"
 
 /**
 The TMC4671_eval code uses DEFAULT_MOTOR and TMC4671_MOTOR defines, why I don't know...

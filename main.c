@@ -103,6 +103,7 @@ setup(){
             Serial.print("HALL_UX = ");
             // mask off all bits but HALL_UX from returned raw input
             // shift the value left to get a 0 or 1 value
+            // MASK and SHIFT defines can be found in fields.h
             Serial.println(tmc_input_raw & TMC4671_HALL_UX_OF_HALL_RAW_MASK >> TMC4671_HALL_UX_OF_HALL_RAW_SHIFT);
             // mask off all bits but HALL_V from returned raw input
             // shift the value left to get a 0 or 1 value

@@ -78,7 +78,7 @@ setup(){
     if (tmc_id != TMC4671_ID){ // if received ID not correct
         // print some debug stuff and loop
         Serial.print("Trinamic chip not detected, read ID: ");
-        Serial.println(HEX, tmc_id);
+        Serial.println(tmc_id, HEX);
         Serial.println("Check connection?\nCheck endianness?\nLooping now...");
         for(;;);
     }
